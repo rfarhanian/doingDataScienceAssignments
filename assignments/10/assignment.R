@@ -30,7 +30,12 @@ cat("NYT File is downloaded successfully.", "\n")
 
 ## Reading and cleaning NYT1 file
 cat("Reading NYT1 file:", "\n")
-source("read.R")
+readData <- function() {
+  originalData= read.csv(file =  "./NYT1.csv" , header=TRUE, sep=",",fill = TRUE, quote = "\"", skipNul=TRUE, encoding = "UTF-8")
+  return (originalData) 
+}
+
+nyt1Data<-readData()
 cat("NYT1 file is successfully read", "\n")
 
 ## 2)	Create a new variable ageGroup that categorizes age into following groups: < 18, 18–24, 25–34, 35–44, 45–54, 55–64 and 65+.
