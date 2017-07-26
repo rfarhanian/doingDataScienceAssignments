@@ -35,7 +35,7 @@ plot(ausbeerts)
 ```{r}
 ausbeerLogTs <- log(ausbeerts)
 plot(ausbeerLogTs)
-ausbeerts2 <- window(ausbeerLogTs, start=1999, end=2009)
+ausbeerts2 <- window(ausbeerLogTs, start=1979, end=1989)
 ts.plot(ausbeerts2)
 ausBeerReturn <- log(lag(ausbeerts2)) - log(ausbeerts2)
 ts.plot(ausBeerReturn)

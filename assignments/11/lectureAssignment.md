@@ -79,14 +79,7 @@ plot(ausbeerLogTs)
 ![](lectureAssignment_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
-ausbeerts2 <- window(ausbeerLogTs, start=1999, end=2009)
-```
-
-```
-## Warning in window.default(x, ...): 'end' value not changed
-```
-
-```r
+ausbeerts2 <- window(ausbeerLogTs, start=1979, end=1989)
 ts.plot(ausbeerts2)
 ```
 
