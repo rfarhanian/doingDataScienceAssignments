@@ -1,0 +1,60 @@
+---
+title: "LectureAssignment"
+author: "Ramin Farhanian"
+date: "July 19, 2017"
+output: 
+  html_document:
+    keep_md: TRUE
+---
+
+# Introduction
+ The lecture assignment is about analyzing a typical time series data. We will download the data, calculate the log returns, calculating volatility measure, and calculating volatility for the entire series using three different decay factors.
+ 
+ 
+# Required Packages
+The required packages should be installed once before the rest of the code executes. 
+```{r}
+installLibrariesOnDemand <- function (packages)
+{
+  cat("Installing required libraries on demand:", packages , "\n")
+  new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
+  if(length(new.packages)) install.packages(new.packages)
+  cat("Missing libraries installation is complete.", "\n")
+}
+installLibrariesOnDemand(c("tseries", "fpp"))
+library(tseries)
+library(fpp)
+```
+ 
+# Download time series data
+```{r}
+ausbeerts <- ts(ausbeer, frequency = 4, start = 1956)
+plot(ausbeerts)
+```
+# Calculate the log returns
+```{r}
+ausbeerLogTs <- log(ausbeerts)
+plot(ausbeerLogTs)
+ausbeerts2 <- window(ausbeerLogTs, start=1999, end=2009)
+ts.plot(ausbeerts2)
+ausBeerReturn <- log(lag(ausbeerts2)) - log(ausbeerts2)
+ts.plot(ausBeerReturn)
+```
+
+# Calculate Volatility measure and volatility measure with a continuous lookback window
+```{r}
+ausBeerVol <- sd(ausBeerReturn)*sqrt(40)* 100
+
+volest <- Vol(10, ausBeerReturn)
+volest2 <- Vol(30, ausBeerReturn)
+volest3 <- Vol(100, ausBeerReturn)
+```
+
+# Plot the results with a volatility curve overlay
+```{r}
+ts.plot(volest, gpars=list(ylab="Volatility"))
+lines(volest2,  col="red")
+lines(volest3,  col="blue")
+```
+
+
