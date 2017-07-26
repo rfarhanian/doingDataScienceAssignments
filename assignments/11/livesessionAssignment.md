@@ -109,7 +109,7 @@ plot(eeadj)
 
 ![](livesessionAssignment_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
-# e)	Change one observation to be an outlier (e.g., add 500 to one observation), and recompute the seasonally adjusted data. What is the effect of the outlier? The outlier has almost no impact on seasonally adjusted data.
+# e)	Change one observation to be an outlier (e.g., add 500 to one observation), and recompute the seasonally adjusted data. What is the effect of the outlier? The outlier has almost no impact on seasonally adjusted data. It slightly changes the shape of the curves. 
 
 
 ```r
