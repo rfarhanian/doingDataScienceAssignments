@@ -1,7 +1,7 @@
 ---
 title: "MSDS 6306_Unit 11"
 author: "Ramin Farhanian"
-date: "July 19, 2017"
+date: "July 20, 2017"
 output: 
   html_document:
     keep_md: TRUE
@@ -21,7 +21,7 @@ library(fpp)
 ```
 ##Homework
 
-# a)	Plot the time series. Can you identify seasonal fluctuations and/or a trend? 
+# a)	Plot the time series. Can you identify seasonal fluctuations and/or a trend? Yes, trend can be seen, but is hard to see the seasonal fluctuations. 
  
 ```{r}
 data(hsales)
@@ -37,12 +37,8 @@ fitd <- decompose(hsales)
 plot(fitd)
 ```
 
-# c)	Do the results support the graphical interpretation from part (a)? 
+# c)	Do the results support the graphical interpretation from part (a)? Yes, they do; however, seasonal fluctuations is more obvious in this plot.
 
-```{r}
-fit <- stl(hsales, s.window=5)
-plot(fit)
-```
 
 # d)	Compute and plot the seasonally adjusted data. 
 
@@ -51,7 +47,7 @@ eeadj <- seasadj(fitd)
 plot(eeadj)
 ```
 
-# e)	Change one observation to be an outlier (e.g., add 500 to one observation), and recompute the seasonally adjusted data. What is the effect of the outlier? 
+# e)	Change one observation to be an outlier (e.g., add 500 to one observation), and recompute the seasonally adjusted data. What is the effect of the outlier? The outlier has almost no impact on seasonally adjusted data.
 
 ```{r}
 hsales2 <- ts(c(hsales[1:136],hsales[137]+250,hsales[138:275]),start=c(1973,1),frequency=12)
@@ -65,7 +61,7 @@ plot(eeadj2)
 ```
 
 
-# f)	Does it make any difference if the outlier is near the end rather than in the middle of the time series? 
+# f)	Does it make any difference if the outlier is near the end rather than in the middle of the time series? No. It almost has no impact on seasonal fluctuations.
 
 ```{r}
 hsales3 <- ts(c(hsales[1:269],hsales[270]+500,hsales[271:275]),start=c(1973,1),frequency=12)
