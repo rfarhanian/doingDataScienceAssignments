@@ -1,0 +1,66 @@
+
+
+my_list = [45.4, 44.2, 36.8, 35.1, 39.0, 60.0, 47.4, 41.1, 45.8 , 35.6]
+
+print my_list
+
+print my_list[4]
+
+my_list.append(55.2)
+
+print my_list
+
+del my_list[5]
+
+print my_list
+
+new_list = filter(lambda item: item>45, my_list)
+
+print new_list
+
+import numpy as np
+
+result =np.array([45.4,44.2,36.8,35.1,39.0,60.0,47.4,41.1,45.8 ,35.6])
+
+print result
+
+print "Mean: %s" % np.mean(result)
+
+print "Standard Deviation: %s" % np.std(result)
+
+print "Max: %s" % np.max(result)
+
+print "Min: %s" % np.min(result)
+
+
+# Part 3
+
+import pandas as pd
+
+iris = pd.read_csv("iris.csv")
+
+print "Iris Head:\n %s" % iris.head()
+
+df = pd.DataFrame(iris)
+result = df.drop('Id', axis=1)
+
+print "\nDataframe without Id:\n %s" % result
+
+print "\nIris setosa :\n "
+f = result[result.Species == 'Iris-setosa'].drop('Species', axis=1)
+print f.describe()
+
+groupedBySpecies = iris.groupby(by='Species')
+
+print "\nGrouped by Species:\n %s" % groupedBySpecies.describe()
+
+result.boxplot()
+
+import seaborn as sns
+sns.pairplot(result, hue='Species')
+
+
+import matplotlib.pyplot as plt
+plt.show()
+
+# You are done. Make sure that I can run in jupytre
