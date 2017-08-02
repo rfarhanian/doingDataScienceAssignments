@@ -28,9 +28,11 @@ print "Mean: %s" % np.mean(result)
 
 print "Standard Deviation: %s" % np.std(result)
 
-print "Max: %s" % np.max(result)
+filteredResult = np.array(filter(lambda x: x < 45, result))
 
-print "Min: %s" % np.min(result)
+print "Max: %s" % np.max(filteredResult)
+
+print "Min: %s" % np.min(filteredResult)
 
 
 # Part 3
@@ -42,19 +44,20 @@ iris = pd.read_csv("iris.csv")
 print "Iris Head:\n %s" % iris.head()
 
 df = pd.DataFrame(iris)
+
 result = df.drop('Id', axis=1)
 
 print "\nDataframe without Id:\n %s" % result
 
 print "\nIris setosa :\n "
-f = result[result.Species == 'Iris-setosa'].drop('Species', axis=1)
-print f.describe()
+setosa = result[result.Species == 'Iris-setosa'].drop('Species', axis=1)
+print setosa.describe()
 
 groupedBySpecies = iris.groupby(by='Species')
 
 print "\nGrouped by Species:\n %s" % groupedBySpecies.describe()
 
-result.boxplot()
+groupedBySpecies.boxplot()
 
 import seaborn as sns
 sns.pairplot(result, hue='Species')
