@@ -31,10 +31,6 @@ class Contact(Base):
     def __repr__(self):
         return "<Contact('%s','%s', '%s', '%s')>" % (self.firstName, self.lastName, self.phoneNumber, self.email)
 
-
-Contact.__table__
-Contact.__mapper__
-
 Base.metadata.create_all(dbEngine)
 
 myContact = Contact('Ramin', 'Farhanian', '4254813507', 'rfarhanian@smu.edu')
