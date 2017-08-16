@@ -1,0 +1,25 @@
+---
+title: "Stackloss"
+author: "Ramin Farhanian"
+date: "8/02/2017"
+output: html_document
+---
+
+#Use summary() function on data set and interpret the results.
+The summary presents the Minimum, 1st Quantile, Median, Mean, 3rd Quantile, and Maximum for all variables.
+```{r}
+summary(stackloss)
+```
+
+#Use the “str” function on the data set and interpret the results.
+There are 21 observations and 4 variables for the stackloss data frame.
+```{r}
+str(stackloss)
+```
+
+
+#Create a scatter plot of stack.loss vs. Air.Flow and describe the relationship.
+There is a positive correlation between the two variables (Air.Flow and Stack.loss).
+```{r}
+plot(stack.loss ~ Air.Flow, data = stackloss, xlab = "Air Flow", ylab = "Stack Loss", main = "Scatterplot of stack.loss vs. Air.Flow")
+```
